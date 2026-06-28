@@ -1,118 +1,218 @@
-# 🧠 NeuroAssist AI
+# NeuroAssist AI
 
-**Advanced Brain Tumor Detection & Glioma Stages Prediction**
+Advanced Brain Tumor Detection and Glioma Stages Prediction
 
-🚀 **[👉 Main Site](https://neuroassistai.vercel.app/)**  
-🌐 **[Try it on Streamlit](https://neuroassist.streamlit.app/)**  
-⚡ **[FastAPI Backend](https://neuroassist-api.onrender.com/docs)**
+[Main Site](https://neuroassistai.vercel.app/) · [Try it on Streamlit](https://neuroassist.streamlit.app/) · [FastAPI Backend](https://neuroassist-api.onrender.com/docs) · [GitHub Repo](https://github.com/codewithsalty/NeuroAssist-Ai)
 
 ---
 
-## 📑 Contents
+<br/>
+<div align="center">
+  <img src="resources/Neuroassist (1).png" alt="NeuroAssist AI landing page showing the main interface with upload option" width="100%" style="max-width: 800px; border-radius: 12px;"/>
+</div>
+<br/>
+
+## Contents
 
 1. [Overview](#overview)
 2. [End-to-End Pipeline](#end-to-end-pipeline)
-3. [Why NeuroAssistAI?](#why-neuroassistai)
+3. [Why NeuroAssist AI](#why-neuroassist-ai)
 4. [Research Basis](#research-basis)
 5. [Dataset](#dataset)
 6. [Model Architectures](#model-architectures)
-7. [Download Pretrained Models](#download-pretrained-models)
-8. [Tech Stack](#tech-stack)
-9. [Project Structure](#project-structure)
-10. [Installation & Local Run](#installation--local-run)
-11. [API Endpoints](#api-endpoints)
-12. [Embedding](#embedding)
-13. [Contributing](#contributing)
-14. [License](#license)
-15. [Contact](#contact)
+7. [Features Walkthrough](#features-walkthrough)
+8. [Download Pretrained Models](#download-pretrained-models)
+9. [Tech Stack](#tech-stack)
+10. [Project Structure](#project-structure)
+11. [Installation and Local Run](#installation-and-local-run)
+12. [API Endpoints](#api-endpoints)
+13. [Embedding](#embedding)
+14. [Contributing](#contributing)
+15. [License](#license)
+16. [Contact](#contact)
 
 ---
 
 ## Overview
 
-**NeuroAssist AI** is a full‑stack AI‑powered diagnostic pipeline that brings brain tumor analysis to your browser, combining deep learning models with a modern web interface.
+NeuroAssist AI is a full-stack AI-powered diagnostic pipeline that brings brain tumor analysis to your browser, combining deep learning models with a modern web interface.
 
 The system operates in two stages:
 
-1. **Tumor Type Detection**
-   A custom **CNN** classifies grayscale MRI scans into
-   `Glioma`, `Meningioma`, `Pituitary` or `No Tumor`.
+1. **Tumor Type Detection** - A custom CNN classifies grayscale MRI scans into Glioma, Meningioma, Pituitary, or No Tumor.
+2. **Glioma Stage Prediction** - A compact ANN predicts glioma stage (I-IV) from gene-mutation inputs.
 
-2. **Glioma Stage Prediction**
-   A compact **ANN** predicts glioma stage (I–IV) from gene‑mutation inputs.
+Built in PyTorch, served via Streamlit (interactive demo) and FastAPI (production API), with a Next.js frontend for a complete end-to-end user experience.
 
-Built in **PyTorch**, served via **Streamlit** (interactive demo) and **FastAPI** (production API), with a **Next.js** frontend for a complete end‑to‑end user experience.
+<div align="center">
+  <img src="resources/Neuroassist (2).png" alt="Tumor detection interface showing MRI upload with analysis results" width="80%" style="border-radius: 8px; margin: 16px 0;"/>
+  <br/>
+  <em>Tumor detection interface — upload an MRI scan and get instant classification results</em>
+</div>
 
 ---
 
-## End‑to‑End Pipeline
+## End-to-End Pipeline
 
-```mermaid
-flowchart LR
-    A[🖼️ Upload MRI Image] --> B[🧠 Web UI / Streamlit: Tumor Detection]
-    B --> C[CNN Model → Tumor Type]
-    C --> D[📤 Display Prediction]
+```
+Upload MRI Image -> CNN Model -> Tumor Type -> Display Prediction
 
-    E[📝 Input Gene Mutations] --> F[🧬 Web UI / Streamlit: Glioma Stage]
-    F --> G[ANN Model → Stage I–IV]
-    G --> H[📤 Display Stage]
-
-    subgraph "Infrastructure"
-      I[Streamlit Cloud] & J[Vercel Site]
-      K[FastAPI Backend]
-    end
-    D & H --> I & J & K
+Input Gene Mutations -> ANN Model -> Stage I-IV -> Display Stage
 ```
 
+Available on Streamlit Cloud for interactive demos and Vercel for the full web experience.
+
+<div align="center">
+  <img src="resources/Neuroassist (4).png" alt="Diagnostic results display with confidence scores" width="80%" style="border-radius: 8px; margin: 16px 0;"/>
+  <br/>
+  <em>Diagnostic results dashboard showing prediction confidence and patient details</em>
+</div>
+
 ---
 
-## Why NeuroAssistAI?
+## Why NeuroAssist AI
 
-* **Clinically Inspired**: Mirrors real diagnostic workflows.
-* **Zero‑Install**: Models auto‑download from Google Drive at first run.
-* **Triple Deployment**:
-  * Interactive demo on **Streamlit**
-  * Full web app on **Vercel** (Next.js)
-  * Production API via **FastAPI**
-* **Extensible**: Easy to swap models or front‑ends.
+- Clinically Inspired: Mirrors real diagnostic workflows.
+- Zero-Install: Models auto-download from Google Drive at first run.
+- Triple Deployment: Interactive Streamlit demo, full Next.js web app, and production FastAPI API.
+- Extensible: Easy to swap models or front-ends.
 
 ---
 
 ## Research Basis
 
-Inspired by the study
-
-> "Brain Tumor Classification and Glioma Stage Prediction Using Deep Learning"
-> implemented from scratch with public MRI datasets and gene mutation data.
+Inspired by the study Brain Tumor Classification and Glioma Stage Prediction Using Deep Learning, implemented from scratch with public MRI datasets and gene mutation data.
 
 ---
 
 ## Dataset
 
-* **Source**: [Kaggle Brain Tumor Dataset](https://www.kaggle.com/datasets)
-* **Classes**: `Glioma`, `Meningioma`, `Pituitary`, `No Tumor`
-* **Format**: Grayscale `.jpg` in class‑named folders
+- Source: Kaggle Brain Tumor Dataset
+- Classes: Glioma, Meningioma, Pituitary, No Tumor
+- Format: Grayscale .jpg in class-named folders
 
 ---
 
 ## Model Architectures
 
-### 🔷 CNN – Tumor Type Detection
+### CNN - Tumor Type Detection
 
-| Layer         | Details                                        |
+| Layer | Details |
 | ------------- | ---------------------------------------------- |
-| **Input**     | 1×224×224 grayscale MRI                        |
-| Conv Block ×3 | Conv2D → ReLU → MaxPool2D                      |
-| FC Layers     | Flatten → Dense(512) → Dense(256) → Softmax(4) |
-| **Output**    | 4‑class probability                            |
+| Input | 1x224x224 grayscale MRI |
+| Conv Block x3 | Conv2D -> ReLU -> MaxPool2D |
+| FC Layers | Flatten -> Dense(512) -> Dense(256) -> Softmax(4) |
+| Output | 4-class probability |
 
-### 🟢 ANN – Glioma Stage Classification
+<div align="center">
+  <img src="resources/Neuroassist (3).png" alt="Glioma staging form with gene mutation inputs" width="80%" style="border-radius: 8px; margin: 16px 0;"/>
+  <br/>
+  <em>Glioma staging input form — enter gene mutation markers for stage prediction</em>
+</div>
 
-| Layer        | Details                                 |
+### ANN - Glioma Stage Classification
+
+| Layer | Details |
 | ------------ | --------------------------------------- |
-| **Input**    | 9 numerical features (gene mutations)   |
-| Dense Layers | 100 → 50 → 30 neurons, ReLU activations |
-| **Output**   | Softmax(4) → Stage I–IV                 |
+| Input | 9 numerical features (gene mutations) |
+| Dense Layers | 100 -> 50 -> 30 neurons, ReLU activations |
+| Output | Softmax(4) -> Stage I-IV |
+
+<div align="center">
+  <img src="resources/Neuroassist (6).png" alt="Complete analysis view combining detection and staging" width="80%" style="border-radius: 8px; margin: 16px 0;"/>
+  <br/>
+  <em>Complete analysis view — tumor type and glioma stage displayed side by side</em>
+</div>
+
+---
+
+## Features Walkthrough
+
+<div align="center">
+  <img src="resources/Neuroassist (5).png" alt="Patient screening questionnaire interface" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
+  <br/>
+  <em>Patient screening questionnaire for initial health assessment</em>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="resources/Neuroassist (7).png" alt="AI assistant chat interface for medical guidance" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
+  <br/>
+  <em>AI assistant chat interface for medical guidance and query resolution</em>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="resources/Neuroassist (8).png" alt="Services overview page" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
+  <br/>
+  <em>Services overview page listing available healthcare solutions</em>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="resources/Neuroassist (9).png" alt="About page with team information" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
+  <br/>
+  <em>About page showcasing team profiles and mission statement</em>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="resources/Neuroassist (10).png" alt="Contact page with form" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
+  <br/>
+  <em>Contact page with inquiry form and support details</em>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="resources/Neuroassist (11).png" alt="Detailed diagnostic report view" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
+  <br/>
+  <em>Detailed diagnostic report with comprehensive patient analysis</em>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="resources/Neuroassist (12).png" alt="Healthcare services listing" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
+  <br/>
+  <em>Comprehensive healthcare services listing</em>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="resources/Neuroassist (13).png" alt="Medical team profiles" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
+  <br/>
+  <em>Medical team profiles with specializations</em>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="resources/Neuroassist (14).png" alt="Platform features and capabilities overview" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
+  <br/>
+  <em>Platform features and capability overview</em>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="resources/Neuroassist (15).png" alt="Mobile responsive view of the application" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
+  <br/>
+  <em>Mobile responsive view — accessible on any device</em>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="resources/Neuroassist (16).png" alt="Application settings and configuration" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
+  <br/>
+  <em>Application settings and configuration panel</em>
+</div>
 
 ---
 
@@ -120,34 +220,32 @@ Inspired by the study
 
 Due to GitHub's 100 MB limit, download the models externally:
 
-* **TumorClassification (CNN)**
-  [Download BTD_model.pth](https://drive.google.com/uc?export=download&id=1juQk4AhIi7u7I41uttCUpJYsvtsPyZUy)
-* **GliomaStageModel (ANN)**
-  [Download glioma_stages.pth](https://drive.google.com/uc?export=download&id=19MrhHVQbSlVmaV-bP_FIpcY5t9wjKMSX)
+- TumorClassification (CNN) - [Download BTD_model.pth](https://drive.google.com/uc?export=download&id=1juQk4AhIi7u7I41uttCUpJYsvtsPyZUy)
+- GliomaStageModel (ANN) - [Download glioma_stages.pth](https://drive.google.com/uc?export=download&id=19MrhHVQbSlVmaV-bP_FIpcY5t9wjKMSX)
 
 After downloading, place them in:
 
 ```
-model/              → for the Streamlit demo
-web/backend/models/ → for the FastAPI backend
+model/              - for the Streamlit demo
+web/backend/models/ - for the FastAPI backend
 ```
 
-> *Tip:* The apps will auto‑fetch these if missing.
+The apps will auto-fetch these if missing.
 
 ---
 
 ## Tech Stack
 
-| Category         | Tools / Libraries                                    |
+| Category | Tools / Libraries |
 | ---------------- | ---------------------------------------------------- |
-| Language         | Python 3.10+, TypeScript                             |
-| Deep Learning    | PyTorch, torchvision                                 |
-| Backend API      | FastAPI, Uvicorn, Pydantic                           |
-| Frontend         | Next.js 15, React 19, Tailwind CSS, shadcn/ui       |
-| Model Demo       | Streamlit                                            |
-| Data Science     | Pillow, NumPy                                        |
-| Hosting          | Vercel, Streamlit Community Cloud, Render            |
-| Model Storage    | Google Drive (public download links)                 |
+| Language | Python 3.10+, TypeScript |
+| Deep Learning | PyTorch, torchvision |
+| Backend API | FastAPI, Uvicorn, Pydantic |
+| Frontend | Next.js 15, React 19, Tailwind CSS, shadcn/ui |
+| Model Demo | Streamlit |
+| Data Science | Pillow, NumPy |
+| Hosting | Vercel, Streamlit Community Cloud, Render |
+| Model Storage | Google Drive (public download links) |
 
 ---
 
@@ -155,60 +253,41 @@ web/backend/models/ → for the FastAPI backend
 
 ```
 NeuroAssist-Ai/
-│
-├── web/                            # Next.js web application
-│   ├── app/                        # App Router pages & API mock routes
-│   │   ├── detect-tumor/           #  MRI upload & tumor detection page
-│   │   ├── predict-glioma/         #  Gene mutation input & staging page
-│   │   ├── screening/              #  Initial health screening
-│   │   ├── diagnostic/             #  Full diagnostic report
-│   │   ├── complete-analysis/      #  Combined analysis view
-│   │   ├── services/               #  Services overview
-│   │   ├── about/                  #  About the project & team
-│   │   ├── contact/                #  Contact page
-│   │   └── api/mock/               #  Mock API endpoints for development
-│   ├── components/                 # React components (shadcn/ui)
-│   │   ├── ui/                     #  UI primitives (button, card, dialog, etc.)
-│   │   └── ai-assistant/           #  AI chat assistant components
-│   ├── backend/                    # FastAPI inference API
-│   │   ├── main.py                 #  Model loading & prediction logic
-│   │   ├── index.py                #  FastAPI REST endpoints
-│   │   ├── models/                 #  PyTorch model definitions
-│   │   │   ├── __init__.py
-│   │   │   └── TumorModel.py       #  CNN & ANN architectures
-│   │   ├── utils.py                #  Helper functions & precautions
-│   │   ├── requirements.txt        #  Python dependencies
-│   │   └── start_server.py         #  Startup script with dependency checks
-│   ├── lib/                        # API client & utilities
-│   ├── public/                     # Static assets & team photos
-│   ├── styles/                     # Global CSS
+├── web/                  Next.js web application
+│   ├── app/              App Router pages and API mock routes
+│   ├── components/       React components and UI library
+│   ├── backend/          FastAPI inference API
+│   │   ├── main.py       Model loading and prediction logic
+│   │   ├── index.py      FastAPI REST endpoints
+│   │   ├── models/       PyTorch model definitions
+│   │   ├── utils.py      Helper functions
+│   │   ├── requirements.txt
+│   │   └── start_server.py
+│   ├── lib/              API client and utilities
+│   ├── public/           Static assets and team photos
+│   ├── styles/           Global CSS
 │   ├── package.json
-│   ├── next.config.mjs
-│   ├── tailwind.config.ts
-│   └── tsconfig.json
-│
-├── model/                          # Standalone Streamlit ML demo
-│   ├── app.py                      # Streamlit UI (tumor detection + staging)
-│   ├── TumorModel.py               # CNN & ANN model definitions
-│   ├── requirements.txt            # Python dependencies
-│   └── README.md                   # Model-specific documentation
-│
-├── README.md                       # You are here
+│   └── next.config.mjs
+├── model/                Standalone Streamlit ML demo
+│   ├── app.py            Streamlit UI
+│   ├── TumorModel.py     CNN and ANN model definitions
+│   └── requirements.txt
+├── resources/            Project screenshots
+├── README.md
 ├── .gitignore
 └── LICENSE
 ```
 
 ---
 
-## Installation & Local Run
+## Installation and Local Run
 
 ### Run the Streamlit model demo
 
 ```bash
 cd model
 python -m venv .venv
-source .venv/bin/activate    # macOS/Linux
-.venv\Scripts\activate       # Windows
+source .venv/bin/activate
 pip install -r requirements.txt
 streamlit run app.py
 ```
@@ -219,10 +298,8 @@ streamlit run app.py
 cd web/backend
 python -m venv .venv
 source .venv/bin/activate
-.venv\Scripts\activate
 pip install -r requirements.txt
 python start_server.py
-# or: uvicorn index:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 ### Run the Next.js frontend
@@ -233,29 +310,27 @@ npm install
 npm run dev
 ```
 
-The app will be available at `http://localhost:3000`. Set `NEXT_PUBLIC_API_URL` in `.env.local` to point to your backend.
+Set NEXT_PUBLIC_API_URL in .env.local to point to your backend.
 
 ---
 
 ## API Endpoints
 
-The FastAPI backend provides the following endpoints:
-
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/` | GET | Health check & model status |
-| `/predict-image` | POST | Upload MRI image for tumor classification |
-| `/predict-glioma-stage` | POST | Submit mutation data for glioma staging (gender, age, idh1, tp53, atrx, pten, egfr, cic, pik3ca) |
-| `/test` | GET | Debug endpoint with system info |
+| / | GET | Health check and model status |
+| /predict-image | POST | Upload MRI image for tumor classification |
+| /predict-glioma-stage | POST | Submit mutation data for glioma staging |
+| /test | GET | Debug endpoint with system info |
 
-### Example: Predict tumor from MRI
+### Predict tumor from MRI
 
 ```bash
 curl -X POST https://neuroassist-api.onrender.com/predict-image \
   -F "file=@brain_scan.jpg"
 ```
 
-### Example: Predict glioma stage
+### Predict glioma stage
 
 ```bash
 curl -X POST https://neuroassist-api.onrender.com/predict-glioma-stage \
@@ -291,24 +366,22 @@ Or embed the full web app:
 
 ## Contributing
 
-1. Fork & clone
+1. Fork and clone
 2. Create a branch: `git checkout -b feat/YourFeature`
-3. Commit & push: `git commit -m "Add YourFeature"`
+3. Commit and push: `git commit -m "Add YourFeature"`
 4. Open a Pull Request
 
 ---
 
 ## License
 
-This project is licensed under **MIT**. See [LICENSE](LICENSE) for details.
+This project is licensed under MIT. See LICENSE for details.
 
 ---
 
-## 📬 Contact
+## Contact
 
-Feel free to reach out or connect with me:
-
-- 📸 [Instagram](https://www.instagram.com/codewithsalty/)
-- 💼 [LinkedIn](https://www.linkedin.com/in/s4lmankhan/)
-- 🐙 [GitHub](https://github.com/codewithsalty)
-- 📧 [Email Me](mailto:codewithsalty@gmail.com)
+- Instagram: [@codewithsalty](https://www.instagram.com/codewithsalty/)
+- LinkedIn: [s4lmankhan](https://www.linkedin.com/in/s4lmankhan/)
+- GitHub: [codewithsalty](https://github.com/codewithsalty)
+- Email: codewithsalty@gmail.com
