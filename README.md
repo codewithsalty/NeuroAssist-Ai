@@ -2,7 +2,7 @@
 
 Advanced Brain Tumor Detection and Glioma Stages Prediction
 
-[Main Site](https://neuroassistai.vercel.app/) · [Try it on Streamlit](https://neuroassist.streamlit.app/) · [FastAPI Backend](https://neuroassist-api.onrender.com/docs) · [GitHub Repo](https://github.com/codewithsalty/NeuroAssist-Ai)
+[Main Site](https://neuroassistai.vercel.app/) ?? [Try it on Streamlit](https://neuroassist.streamlit.app/) ?? [FastAPI Backend](https://neuroassist-api.onrender.com/docs) ?? [GitHub Repo](https://github.com/codewithsalty/NeuroAssist-Ai)
 
 ---
 
@@ -46,8 +46,6 @@ Built in PyTorch, served via Streamlit (interactive demo) and FastAPI (productio
 
 <div align="center">
   <img src="resources/Neuroassist (2).png" alt="Tumor detection interface showing MRI upload with analysis results" width="80%" style="border-radius: 8px; margin: 16px 0;"/>
-  <br/>
-  <em>Tumor detection interface — upload an MRI scan and get instant classification results</em>
 </div>
 
 ---
@@ -64,8 +62,6 @@ Available on Streamlit Cloud for interactive demos and Vercel for the full web e
 
 <div align="center">
   <img src="resources/Neuroassist (4).png" alt="Diagnostic results display with confidence scores" width="80%" style="border-radius: 8px; margin: 16px 0;"/>
-  <br/>
-  <em>Diagnostic results dashboard showing prediction confidence and patient details</em>
 </div>
 
 ---
@@ -106,8 +102,6 @@ Inspired by the study Brain Tumor Classification and Glioma Stage Prediction Usi
 
 <div align="center">
   <img src="resources/Neuroassist (3).png" alt="Glioma staging form with gene mutation inputs" width="80%" style="border-radius: 8px; margin: 16px 0;"/>
-  <br/>
-  <em>Glioma staging input form — enter gene mutation markers for stage prediction</em>
 </div>
 
 ### ANN - Glioma Stage Classification
@@ -120,8 +114,6 @@ Inspired by the study Brain Tumor Classification and Glioma Stage Prediction Usi
 
 <div align="center">
   <img src="resources/Neuroassist (6).png" alt="Complete analysis view combining detection and staging" width="80%" style="border-radius: 8px; margin: 16px 0;"/>
-  <br/>
-  <em>Complete analysis view — tumor type and glioma stage displayed side by side</em>
 </div>
 
 ---
@@ -130,88 +122,66 @@ Inspired by the study Brain Tumor Classification and Glioma Stage Prediction Usi
 
 <div align="center">
   <img src="resources/Neuroassist (5).png" alt="Patient screening questionnaire interface" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
-  <br/>
-  <em>Patient screening questionnaire for initial health assessment</em>
 </div>
 
 <br/>
 
 <div align="center">
   <img src="resources/Neuroassist (7).png" alt="AI assistant chat interface for medical guidance" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
-  <br/>
-  <em>AI assistant chat interface for medical guidance and query resolution</em>
 </div>
 
 <br/>
 
 <div align="center">
   <img src="resources/Neuroassist (8).png" alt="Services overview page" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
-  <br/>
-  <em>Services overview page listing available healthcare solutions</em>
 </div>
 
 <br/>
 
 <div align="center">
   <img src="resources/Neuroassist (9).png" alt="About page with team information" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
-  <br/>
-  <em>About page showcasing team profiles and mission statement</em>
 </div>
 
 <br/>
 
 <div align="center">
   <img src="resources/Neuroassist (10).png" alt="Contact page with form" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
-  <br/>
-  <em>Contact page with inquiry form and support details</em>
 </div>
 
 <br/>
 
 <div align="center">
   <img src="resources/Neuroassist (11).png" alt="Detailed diagnostic report view" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
-  <br/>
-  <em>Detailed diagnostic report with comprehensive patient analysis</em>
 </div>
 
 <br/>
 
 <div align="center">
   <img src="resources/Neuroassist (12).png" alt="Healthcare services listing" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
-  <br/>
-  <em>Comprehensive healthcare services listing</em>
 </div>
 
 <br/>
 
 <div align="center">
   <img src="resources/Neuroassist (13).png" alt="Medical team profiles" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
-  <br/>
-  <em>Medical team profiles with specializations</em>
 </div>
 
 <br/>
 
 <div align="center">
   <img src="resources/Neuroassist (14).png" alt="Platform features and capabilities overview" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
-  <br/>
-  <em>Platform features and capability overview</em>
 </div>
 
 <br/>
 
 <div align="center">
   <img src="resources/Neuroassist (15).png" alt="Mobile responsive view of the application" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
-  <br/>
-  <em>Mobile responsive view — accessible on any device</em>
 </div>
 
 <br/>
 
 <div align="center">
   <img src="resources/Neuroassist (16).png" alt="Application settings and configuration" width="80%" style="border-radius: 8px; margin: 12px 0;"/>
-  <br/>
-  <em>Application settings and configuration panel</em>
 </div>
 
 ---
@@ -253,29 +223,29 @@ The apps will auto-fetch these if missing.
 
 ```
 NeuroAssist-Ai/
-├── web/                  Next.js web application
-│   ├── app/              App Router pages and API mock routes
-│   ├── components/       React components and UI library
-│   ├── backend/          FastAPI inference API
-│   │   ├── main.py       Model loading and prediction logic
-│   │   ├── index.py      FastAPI REST endpoints
-│   │   ├── models/       PyTorch model definitions
-│   │   ├── utils.py      Helper functions
-│   │   ├── requirements.txt
-│   │   └── start_server.py
-│   ├── lib/              API client and utilities
-│   ├── public/           Static assets and team photos
-│   ├── styles/           Global CSS
-│   ├── package.json
-│   └── next.config.mjs
-├── model/                Standalone Streamlit ML demo
-│   ├── app.py            Streamlit UI
-│   ├── TumorModel.py     CNN and ANN model definitions
-│   └── requirements.txt
-├── resources/            Project screenshots
-├── README.md
-├── .gitignore
-└── LICENSE
+????????? web/                  Next.js web application
+???   ????????? app/              App Router pages and API mock routes
+???   ????????? components/       React components and UI library
+???   ????????? backend/          FastAPI inference API
+???   ???   ????????? main.py       Model loading and prediction logic
+???   ???   ????????? index.py      FastAPI REST endpoints
+???   ???   ????????? models/       PyTorch model definitions
+???   ???   ????????? utils.py      Helper functions
+???   ???   ????????? requirements.txt
+???   ???   ????????? start_server.py
+???   ????????? lib/              API client and utilities
+???   ????????? public/           Static assets and team photos
+???   ????????? styles/           Global CSS
+???   ????????? package.json
+???   ????????? next.config.mjs
+????????? model/                Standalone Streamlit ML demo
+???   ????????? app.py            Streamlit UI
+???   ????????? TumorModel.py     CNN and ANN model definitions
+???   ????????? requirements.txt
+????????? resources/            Project screenshots
+????????? README.md
+????????? .gitignore
+????????? LICENSE
 ```
 
 ---
