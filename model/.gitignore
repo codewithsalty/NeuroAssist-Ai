@@ -1,0 +1,8 @@
+# Virtual env
+.venv1/
+.venv/
+# PyTorch model files (we’ll download them at runtime)
+*.pth
+# Bytecode
+__pycache__/
+*.pyc
